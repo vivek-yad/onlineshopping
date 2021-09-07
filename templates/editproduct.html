@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="index.html"><img style="height: 50px;" src="{% static 'images/logo2.png' %}" alt="" /></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="{% url 'viewallproduct' %}">View All Products</a></li>
+      <li class="active"><a style="background-color: #B81D22 !important; color:white;" href="{% url 'addproduct' %}">Add Item</a></li>
+      <li><a href="#">Change Password</a></li>
+      <li><a href="#">View Order</a></li>
+    </ul>
+  </div>
+</nav>
+<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<center><h1 style="margin-bottom: 20px;">ADD PRODUCTS</h1></center>
+
+
+<!-- Text input-->
+{% if i %}
+<div class="form-group">
+  <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
+  <div class="col-md-4">
+  <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required="" type="text" value="{{i.product_name}}">
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
+  <div class="col-md-4">
+   <select id="percentage_discount" name="category" class="form-control input-md" required="">
+    <option value="">SELECT OPTION</option>
+    <option value="babygift" {% if i.category == 'babygift' %} selected {% endif %}>BABY GIFT</option>
+    <option value="birthdaygift" {% if i.category == 'birthdaygift' %} selected {% endif %}>BIRTHDAY GIFT</option>
+    <option value="accentsgift" {% if i.category == 'accentsgift' %} selected {% endif %}>TOYS GIFT</option>
+    <option value="cristamgift" {% if i.category == 'cristamgift' %} selected {% endif %}>CRISTAM GIFT</option>
+    <option value="toysgift" {% if i.category == 'toysgift' %} selected {% endif %}>ACCENTS GIFT</option>
+    <option value="valentinegift" {% if i.category == 'valentinegift' %} selected {% endif %}>VALENTINE GIFT</option>
+    <option value="artificialgift" {% if i.category == 'artificialgift' %} selected {% endif %}>ARTIFICIAL GIFT</option>
+    <option value="giftforher" {% if i.category == 'giftforher' %} selected {% endif %}>GIFT FOR HER</option>
+    <option value="giftforhim" {% if i.category == 'giftforhim' %} selected {% endif %}>GIFT FOR HIM</option>
+    
+  </select>
+  </div>
+</div>
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="sub_category">PRODUCT SUB_CATEGORY</label>
+  <div class="col-md-4">
+    <input id="product_name" name="subcategory" placeholder="PRODUCT SUB_CATEGORY" class="form-control input-md" required="" type="text" value="{{i.subcategory}}">
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="product_description">PRODUCT DESCRIPTION</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="product_description" name="product_description">{{i.desc}}</textarea>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">PRICE</label>
+  <div class="col-md-4">
+    <input id="product_name" name="price" placeholder="product_description " class="form-control input-md" required="" type="number" value="{{i.price}}">
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">IMAGE</label>
+  <div class="col-md-4">
+    <a href="/media/{{i.Image}}">media/{{i.Image}}</a>
+    <input id="filebutton" name="image" class="form-control input-md input-file" type="file" value="/media/{{i.Image}}">
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">PUBLISH DATE</label>
+  <div class="col-md-4">
+    <input id="product_name" name="pub_date" class="form-control input-md" required="" type="date" value="{{i.Pub_date}}">
+  </div>
+</div>
+{% endif %}
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton">Update Product</label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="add" class="btn btn-primary form-control">UPDATE</button>
+  </div>
+  </div>
+
+</fieldset>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% extends 'base.html ' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+	.class{
+		float: left;
+	}
+</style>
+</div>
+	<div class="header_bottom">
+	     	<div class="menu">
+	     		<ul>
+			    	<li class="active"><a href="/">Home</a></li>
+			    	<li><a href="{% url 'newproducts' %}">New Products</a></li>
+			    	<li><a href="{% url 'specialoffer' %}">Special Offers</a></li>
+			    	<li><a href="{% url 'myaccount' %}">My Account</a></li>
+			    	<li><a href="{% url 'cartitems' %}">Shopping Cart</a></li>
+			    	<li><a href="{% url 'location' %}">Locations</a></li>
+			    	<li><a href="{% url 'news' %}">News</a></li>
+			    	<li><a href="{% url 'contact' %}">Contact Us</a></li>
+			    	<div class="clear"></div>
+     			</ul>
+	     	</div>
+	     	<div class="clear"></div>
+	     </div>
+	     <div><ul style="border:1px solid grey; border-radius: 5px; margin-top: 20px;">
+			    	<li style="float: left; padding: 10px;border:1px solid grey; "><a style="color:black;" href="{% url 'babygift' %}">Baby Gifts</a></li>
+			    	<li style="float: left; padding: 10px;border:1px solid grey;"><a style="color:black;" href="{% url 'birthdaygift' %}">Birthday Gift</a></li>
+			    	<li style="float: left; padding: 10px;border:1px solid grey;"><a style="color:black;" href="{% url 'accentsgift' %}">Accents Gift</a></li>
+			    	<li style="float: left; padding: 10px;border:1px solid grey;"><a style="color:black;" href="{% url 'cristamgift' %}">Cristam Gift</a></li>
+			    	<li style="float: left; padding: 10px;border:1px solid grey;"><a style="color:black;" href="{% url 'toysgift' %}">Toys Gift</a></li>
+			    	<li style="float: left; padding: 10px;border:1px solid grey;"><a style="color:black;" href="{% url 'valentinegift' %}">Valentine Gift</a></li>
+			    	<li style="float: left; padding: 10px;border:1px solid grey;"><a style="color:black;" href="{% url 'artificialgift' %}">Artificial Gift</a></li>
+			    	<li style="float: left; padding: 10px;border:1px solid grey;"><a style="color:red;" href="{% url 'giftforher' %}">Gift For Her</a></li>
+			    	<li style="float: left; padding: 10px;border:1px solid grey;"><a style="color:black;" href="{% url 'giftforhim' %}">Gift For Him</a></li>
+			    	<div class="clear"></div>
+     			</ul> 
+	     </div>  
+ <div class="main">
+    <div class="content">
+    	<div class="content_top">
+    		<div class="heading">
+    		<h3>Gifts For Her</h3>
+    		</div>
+    		<div class="see">
+    			<p><a href="#">See all Products</a></p>
+    		</div>
+    		<hr style="margin-top: 45px;">
+    		<div class="clear"></div>
+	     <div class="row">
+	      	{% for i in gf %}
+				<div class="card col-md-3 img-thumbnail" style="width: 18rem;margin-bottom: 30px;height:350px;">
+					<a href="{% url 'viewproduct' i.id %}">
+				  	<img src="/media/{{i.image}}" class="card-img-top img-thumbnail" alt="..." style="max-width:100%;height: 180px;">
+						  <div class="card-body">
+						  	<strong>{{i.name}}</strong>
+						  </a>
+						    <p class="card-text">{{i.desc|slice:"0:30"}}...</p>
+						    
+						    <p><strong style="background-color: yellow">${{i.price}}</strong> &nbsp;&nbsp; <a href="{% url 'cart' i.id %}"><button class="btn btn-info">Add to cart</button></a></p>
+						  </div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+</div>
+</div>
+</div>
+</div>
+   {% endblock %}

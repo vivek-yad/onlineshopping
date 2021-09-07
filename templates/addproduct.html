@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+body{
+    margin: 0;
+    padding: 0;
+    font-family:century gothic;
+    color:white;
+    background-image:linear-gradient(#B81D22,grey,black);
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover
+  }
+.abc{
+  margin-bottom: 80px;
+}
+.hov:hover{
+  background-color: #B81D22;
+}
+a:hover{
+  color:white !important;
+}
+</style>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="index.html"><img style="height: 50px;" src="{% static 'images/logo2.png' %}" alt="" /></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="hov"><a href="/">Home</a></li>
+      <li class="hov"><a href="{% url 'viewallproduct' %}">View All Products</a></li>
+      <li class="active"><a style="background-color: #B81D22 !important; color:white;" href="{% url 'addproduct' %}">Add Product</a></li>
+      <li class="hov"><a href="{% url 'change_password' %}">Change Password</a></li>
+      <li class="hov"><a href="{% url 'vieworder' %}">View Order</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="abc">
+<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<center><h1 style="margin-bottom: 20px;">ADD PRODUCTS</h1></center>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
+  <div class="col-md-4">
+  <input id="product_name" name="product_name" placeholder="PRODUCT NAME" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
+  <div class="col-md-4">
+   <select id="percentage_discount" name="category" class="form-control input-md" required="">
+    <option value="">SELECT OPTION</option>
+    <option value="babygift">BABY GIFT</option>
+    <option value="birthdaygift">BIRTHDAY GIFT</option>
+    <option value="accentsgift">TOYS GIFT</option>
+    <option value="cristamgift">CRISTAM GIFT</option>
+    <option value="toysgift">ACCENTS GIFT</option>
+    <option value="valentinegift">VALENTINE GIFT</option>
+    <option value="artificialgift">ARTIFICIAL GIFT</option>
+    <option value="giftforher">GIFT FOR HER</option>
+    <option value="giftforhim">GIFT FOR HIM</option>
+    
+  </select>
+  </div>
+</div>
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="sub_category">PRODUCT SUB_CATEGORY</label>
+  <div class="col-md-4">
+    <input id="product_name" name="subcategory" placeholder="PRODUCT SUB_CATEGORY" class="form-control input-md" required="" type="text">
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="product_description">PRODUCT DESCRIPTION</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="product_description" name="product_description"></textarea>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">PRICE</label>
+  <div class="col-md-4">
+    <input id="product_name" name="price" placeholder="Price In $" class="form-control input-md" required="" type="number">
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">IMAGE</label>
+  <div class="col-md-4">
+    <input id="filebutton" name="image" class="form-control input-md input-file" type="file">
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">PUBLISH DATE</label>
+  <div class="col-md-4">
+    <input id="product_name" name="pub_date" class="form-control input-md" required="" type="date">
+  </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton">Add Product</label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="add" class="btn btn-primary form-control">Add Product</button>
+  </div>
+  </div>
+
+</fieldset>
+</form>
+</div>
+</body>
+</html>

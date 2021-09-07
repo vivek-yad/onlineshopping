@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+		<div class="menu">
+	     		<ul>
+	     			<li><a href="/">Home</a></li>
+			    	<li><a href="{% url 'newproducts' %}">New Products</a></li>
+			    	<li class="active"><a href="{% url 'specialoffer' %}">Special Offers</a></li>
+			    	<li><a href="{% url 'myaccount' %}">My Account</a></li>
+			    	<li><a href="{% url 'cartitems' %}">Shopping Cart</a></li>
+			    	<li><a href="{% url 'location' %}">Locations</a></li>
+			    	<li><a href="{% url 'news' %}">News</a></li>
+			    	<li><a href="{% url 'contact' %}">Contact Us</a></li>
+			    	<div class="clear"></div>
+     			</ul>
+	     </div>
+	     <div class="clear"></div>
+	     </div>
+	     	<div class="header_slide">
+			<div class="header_bottom_left">				
+				<div class="categories">
+				  <ul>
+				  	<h3>Categories</h3>
+				       <li><a href="{% url 'babygift' %}">Baby Gift</a></li>
+				      <li><a href="{% url 'birthdaygift' %}">Birthday Gift</a></li>
+				      <li><a href="{% url 'cristamgift' %}">Cristam Gift</a></li>
+				      <li><a href="{% url 'accentsgift' %}">Accent's Gift</a></li>
+				      <li><a href="{% url 'toysgift' %}">Toys Gift</a></li>
+				       <li><a href="{% url 'artificialgift' %}">Artificial Gift</a></li>
+				       <li><a href="{% url 'valentinegift' %}">Valentine Gift</a></li>
+				       <li><a href="{% url 'giftforher' %}">Gift For Her</a></li>
+				       <li><a href="{% url 'giftforhim' %}">Gift For Him</a></li>
+				  </ul>
+				</div>					
+	  	     </div>
+					 <div class="header_bottom_right">					 
+					 	 <div class="slider">					     
+							 <div id="slider">
+			                    <div id="mover">
+			                    	<div id="slide-1" class="slide">			                    
+									 <div class="slider-img">
+									     <a href="preview.html"><img src="{% static 'images/gift2.png' %}" alt="learn more" /></a>									    
+									  </div>
+						             	<div class="slider-text">
+		                                 <h1>GIFTS<br><span>SALE</span></h1>
+		                                 <h2>UPTo 20% OFF</h2>
+									   <div class="features_list">
+									   	<h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>							               
+							            </div>
+							             <a href="preview.html" class="button">Shop Now</a>
+					                   </div>			               
+									  <div class="clear"></div>				
+				                  </div>	
+						             	<div class="slide">
+						             		<div class="slider-text">
+		                                 <h1>GIFTS<br><span>SALE</span></h1>
+		                                 <h2>UPTo 40% OFF</h2>
+									   <div class="features_list">
+									   	<h4>Get to Know More About Our Memorable Services</h4>							               
+							            </div>
+							             <a href="preview.html" class="button">Shop Now</a>
+					                   </div>		
+						             	 <div class="slider-img">
+									     <a href="preview.html"><img src="{% static 'images/slide-3-image.jpg' %}" alt="learn more" /></a>
+									  </div>						             					                 
+									  <div class="clear"></div>				
+				                  </div>
+				                  <div class="slide">						             	
+					                  <div class="slider-img">
+									     <a href="preview.html"><img src="{% static 'images/gift4.png' %}" alt="learn more" /></a>
+									  </div>
+									  <div class="slider-text">
+		                                 <h1>GIFTS<br><span>SALE</span></h1>
+		                                 <h2>UPTo 10% OFF</h2>
+									   <div class="features_list">
+									   	<h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>							               
+							            </div>
+							             <a href="preview.html" class="button">Shop Now</a>
+					                   </div>	
+									  <div class="clear"></div>				
+				                  </div>												
+			                 </div>		
+		                </div>
+					 <div class="clear"></div>					       
+		         </div>
+		      </div>
+		   <div class="clear"></div>
+		</div>
+   </div>
+ <div class="main">
+    <div class="content">
+    	<div class="content_top">
+    		<div class="heading">
+    		<h3>Special Offers</h3>
+    		</div>
+    		<div class="see">
+    			<p><a href="#">See all Products</a></p>
+    		</div>
+    		<div class="clear"></div>
+    	</div>
+	      <div class="section group">
+	      	{% for i in list %}
+	      	{% csrf_token %}
+	
+				<a href="{% url 'viewproduct' i.id %}">
+				<div class="grid_1_of_4 images_1_of_4" style="margin: 1% 0 1% 1%;height: 350px;">
+					 <img src="/media/{{i.Image}}" alt="" />
+					 <h2>{{i.desc|slice:"0:25"}}...</h2>
+					<div class="price-details">
+				       <div class="price-number">
+							<p><span class="rupees">${{i.price}}</span></p>
+					    </div>
+					    </a>
+					       		<div class="add-cart">								
+									<h4><a href="{% url 'cart' i.id %}">Add to Cart</a></h4>
+							     </div>
+							 <div class="clear"></div>
+					</div>
+					 
+				</div>
+			
+			{% endfor %}
+			</div>
+			
+    </div>
+ </div>
+</div>
+
+  {% endblock %}

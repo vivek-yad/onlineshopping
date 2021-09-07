@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<div class="menu">
+	     		<ul>
+	     			<li><a href="/">Home</a></li>
+			    	<li><a href="{% url 'newproducts' %}">New Products</a></li>
+			    	<li><a href="{% url 'specialoffer' %}">Special Offers</a></li>
+			    	<li><a href="{% url 'myaccount' %}">My Account</a></li>
+			    	<li><a href="{% url 'cartitems' %}">Shopping Cart</a></li>
+			    	<li class="active"><a href="{% url 'location' %}">Locations</a></li>
+			    	<li><a href="{% url 'news' %}">News</a></li>
+			    	<li><a href="{% url 'contact' %}">Contact Us</a></li>
+			    	<div class="clear"></div>
+     			</ul>
+	     </div>
+	     <div class="clear"></div>
+	     </div>     
+	<div class="header_slide">
+			<div class="header_bottom_left">				
+				<div class="categories">
+				  <ul>
+				  	<h3>Categories</h3>
+				      <li><a href="#">Baby Gift</a></li>
+				      <li><a href="#">Birthday Gift</a></li>
+				      <li><a href="#">Cristam Gift</a></li>
+				      <li><a href="#">Accent's Gift</a></li>
+				      <li><a href="#">Toys Gift</a></li>
+				       <li><a href="#">Artificial Gift</a></li>
+				       <li><a href="#">Valentine Gift</a></li>
+				       <li><a href="#">Gift For Her</a></li>
+				       <li><a href="#">Gift For Him</a></li>
+				  </ul>
+				</div>					
+	  	     </div>
+		   <div class="clear"></div>
+		</div>
+   </div>
+</div>
+{% endblock %}

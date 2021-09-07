@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style type="text/css">
+  th{
+    border:2px solid black;
+    padding: 10px 20px;
+  }
+  table{
+    border-radius: 10px;
+  }
+  td{
+    border:2px solid black;
+    padding: 10px 20px;
+    text-align: center;
+  }
+</style>
+  <div class="menu">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'newproducts' %}">New Products</a></li>
+            <li><a href="{% url 'specialoffer' %}">Special Offers</a></li>
+            <li class="active"><a href="{% url 'myaccount' %}">My Account</a></li>
+            <li><a href="{% url 'shoppingcart' %}">Shopping Cart</a></li>
+            <li><a href="{% url 'location' %}">Locations</a></li>
+            <li><a href="{% url 'news' %}">News</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            <div class="clear"></div>
+          </ul>
+       </div>
+       <div class="clear"></div>
+       </div>
+  <div class="header_slide">
+           <div>
+            <table style="border:2px solid black; margin: 0 auto;">
+              <tr>
+                <th colspan="7"><h1 style="font-size: 30px;">My Cart</h1></th>
+              </tr>
+              <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Sub Category</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th colspan="2">Action</th>
+              </tr>
+              {% for i in cart %}
+              <tr>
+                <td>{{i.product_name}}</td>
+                <td>{{i.category}}</td>
+                <td>{{i.subcategory}}</td>
+                <td>{{i.price}}</td>
+                <td><img src="/media/{{i.Image}}" style="max-width: 80px; height: 80px;"></td>
+                <td><a href="{% url 'buynow' i.id %}">Buy Now</a></td>
+                <td><a href="{% url 'deletecartitem' i.id %}">Delete</a></td>
+              </tr>
+              {% endfor %}
+            </table>
+           
+           </div>
+       <div class="clear"></div>
+
+    </div>
+   </div>
+</div>
+{% endblock %}
+
